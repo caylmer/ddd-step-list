@@ -25,7 +25,8 @@ export class DddStepList extends DDDSuper(I18NMixin(LitElement)) {
     this.t = {
       ...this.t,
       title: "Title",
-    };
+    }
+    this.index = 0;
     this.registerLocalization({
       context: this,
       localesPath:
@@ -40,6 +41,7 @@ export class DddStepList extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      index: { type: Number }
     };
   }
 
@@ -62,12 +64,25 @@ export class DddStepList extends DDDSuper(I18NMixin(LitElement)) {
       }
     `];
   }
-
+  updated(changedProperties) {
+    if (changedProperties.has("title")) {
+      this.indexcount();
+    }
+  }
+  indexcount() {
+    const items = this.querySelectorAll("ddd-step");
+    items.forEach((element, index) => {
+      element.count = index + 1
+      console.log(element.count);
+    });
+  }
   // Lit render the HTML
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <h3>${this.title}</h3>
+   <div class="steps-items">
+    <slot id="step-slot"></slot>
   <slot></slot>
 </div>`;
   }
