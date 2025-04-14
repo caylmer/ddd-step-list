@@ -24,7 +24,7 @@ export class DddStepList extends DDDSuper(I18NMixin(LitElement)) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: "The 2+2 Plan",
+      title: "Title",
     }
     this.index = 0;
     this.registerLocalization({
