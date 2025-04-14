@@ -2,8 +2,8 @@
  * Copyright 2025 caylmer
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css } from "lit";
+import { DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -12,15 +12,16 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @demo index.html
  * @element ddd-step-list
  */
-export class DddStepList extends DDDSuper(I18NMixin(LitElement)) {
+export class DddStepListItem extends DDDPulseEffectSuper(I18NMixin(DDD)) {
 
   static get tag() {
-    return "ddd-step-list";
+    return "ddd-step-list-item";
   }
 
   constructor() {
     super();
     this.title = "";
+    
     this.t = this.t || {};
     this.t = {
       ...this.t,
